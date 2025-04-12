@@ -23,3 +23,4 @@ require("lazy").setup({ { import = "douglas.plugins" }, { import = "douglas.plug
     notify = false,
   },
 })
+

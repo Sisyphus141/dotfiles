@@ -15,4 +15,8 @@
     fg3:    #3D3D3D;
 }
 
+font:
+  family: "JetBrains Mono"
+  size: 11
+
 @import "rounded-common.rasi"
