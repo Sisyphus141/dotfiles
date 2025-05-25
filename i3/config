@@ -4,7 +4,7 @@
 set $mod Mod4
 
 # Fonts
-font pango:JetBrains Mono 10
+font pango:JetBrains Mono 12
 
 
 # Workspace names
@@ -18,6 +18,7 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
 
 # Startup applications
 exec_always --no-startup-id xmodmap ~/.Xmodmap
@@ -49,10 +50,21 @@ bindcode 232 exec --no-startup-id brightnessctl set 10%-
 bindcode 233 exec --no-startup-id brightnessctl set +10%
 
 # Application launcher
-bindsym Mod1+d exec --no-startup-id rofi -show drun -show-icons -theme ~/rofi-themes-collection/themes/rounded-nord-dark.rasi
+bindsym Mod4+d exec --no-startup-id rofi -show drun -show-icons -theme ~/rofi-themes-collection/themes/rounded-nord-dark.rasi
+# alt key >> bindsym Mod1+d exec --no-startup-id rofi -show drun -show-icons -theme ~/rofi-themes-collection/themes/rounded-nord-dark.rasi
+
+
+
+
 
 # Terminal
-bindsym $mod+Return exec kitty
+
+bindsym $mod+Return exec wezterm
+
+# Search engine (Firefox)
+bindsym $mod+space exec --no-startup-id firefox
+bindsym $mod+o exec --no-startup-id obsidian
+
 
 # Kill window
 bindsym $mod+q kill
@@ -77,6 +89,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# what does this do?? \/
+
 # Layouts
 bindsym $mod+h split h
 bindsym $mod+v split v
@@ -85,7 +99,7 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # Workspaces
@@ -139,11 +153,30 @@ bar {
         -p datetime.format memory.usedonly=true \
         -t iceberg-powerline
     position top
-    font pango:DejaVu Sans Mono, FontAwesome 9.5
+    font pango:JetBrains Mono Bold 8
+    strip_workspace_numbers yes
+
+
+
+
+colors {
+    background         #1E1F29
+    separator          #1b154f
+
+    #                   border        background        text
+    focused_workspace   #050A30       #0000FF          $text-color
+    inactive_workspace  #050A30       #000C66           $inactive-text-color
+    urgent_workspace    #050A30       #050A30           $text-color
+  }
 }
 
+
 # Borders
-default_border pixel 1
-default_floating_border pixel 1
+#default_border pixel 1
+#default_floating_border pixel 1
+
+default_border none
+
+# Power History
 exec_always --no-startup-id /home/aaron/battery-log-and-plot.sh &
 

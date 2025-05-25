@@ -1,10 +1,10 @@
 return {
 	"stevearc/conform.nvim",
 	lazy = true,
-	event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		vim.opt.shiftwidth = 2 -- Use 2 spaces for autoindents
-		vim.opt.tabstop = 2 -- Number of spaces that a <Tab> in the file counts for
+		vim.opt.shiftwidth = 2
+		vim.opt.tabstop = 2
 		local conform = require("conform")
 
 		conform.setup({
@@ -22,8 +22,9 @@ return {
 				graphql = { "prettier" },
 				lua = { "stylua" },
 				python = { "isort", "black" },
-				c = { "clang_format" }, -- Added clang_format for C
+				c = { "clang_format" },
 				cpp = { "clang_format" },
+				java = { "google_java_format" }, -- ✅ Java formatter
 			},
 			format_on_save = {
 				lsp_fallback = true,
@@ -31,6 +32,13 @@ return {
 				timeout_ms = 1000,
 			},
 		})
+
+		-- ✅ Define how to run the google_java_format formatter
+		conform.formatters.google_java_format = {
+			command = "google-java-format",
+			args = { "-" },
+			stdin = true,
+		}
 
 		vim.keymap.set({ "n", "v" }, "<leader>f", function()
 			conform.format({
