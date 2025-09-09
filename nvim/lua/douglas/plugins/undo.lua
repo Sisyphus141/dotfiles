@@ -6,7 +6,7 @@ return {
 
         -- Setup for persistent undo
         if vim.fn.has("persistent_undo") == 1 then
-            local target_path = vim.fn.expand(vim.fn.stdpath("data") .. "/undodir")
+            local target_path = vim.fn.stdpath("data") .. "/undodir"
             if vim.fn.isdirectory(target_path) == 0 then
                 vim.fn.mkdir(target_path, "p", 0700)
             end
