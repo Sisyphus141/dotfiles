@@ -1,11 +1,10 @@
 return {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    config = function()
-        require("mason").setup()
-        require("mason-lspconfig").setup({
-            ensure_installed = { "clangd", "tsserver", "cssls" },
-        })
-    end,
+	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
+	config = function()
+		require("mason").setup()
+		require("mason-lspconfig").setup({
+			ensure_installed = { "clangd", "tsserver", "cssls", "lua_ls" },
+		})
+	end,
 }
-
