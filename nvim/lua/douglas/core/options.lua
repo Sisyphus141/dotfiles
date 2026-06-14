@@ -2,7 +2,6 @@ local opt = vim.opt -- for conciseness
 
 opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 
-
 -- line numbers
 opt.relativenumber = true -- show relative line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
@@ -13,6 +12,9 @@ opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
 vim.opt.scrolloff = 8
+opt.smartindent = true
+opt.cindent = true
+
 -- line wrapping
 opt.wrap = false -- disable line wrapping
 
@@ -44,6 +46,7 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
+-- auto change dir
+vim.opt.autochdir = true
 
-vim.opt.smartindent = true
 vim.opt.updatetime = 50
