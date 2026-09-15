@@ -46,7 +46,11 @@ return {
 		-- =========================
 
 		local on_attach = function(client, bufnr)
-			local opts = { noremap = true, silent = true, buffer = bufnr }
+			local opts = {
+				noremap = true,
+				silent = true,
+				buffer = bufnr,
+			}
 
 			keymap("n", "gR", vim.lsp.buf.references, opts)
 			keymap("n", "gD", vim.lsp.buf.declaration, opts)
@@ -136,7 +140,10 @@ return {
 
 			on_attach = on_attach,
 
-			cmd = { "eslint_d", "--stdio" },
+			cmd = {
+				"eslint_d",
+				"--stdio",
+			},
 
 			filetypes = {
 				"javascript",
@@ -147,5 +154,32 @@ return {
 		})
 
 		vim.lsp.enable("eslint")
+
+		-- =========================
+		-- RACKET
+		-- =========================
+
+		vim.lsp.config("racket_langserver", {
+			capabilities = capabilities,
+
+			on_attach = on_attach,
+
+			cmd = {
+				"racket",
+				"--lib",
+				"racket-langserver",
+			},
+
+			filetypes = {
+				"racket",
+				"scheme",
+			},
+
+			root_markers = {
+				".git",
+			},
+		})
+
+		vim.lsp.enable("racket_langserver")
 	end,
 }
